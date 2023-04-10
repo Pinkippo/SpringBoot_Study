@@ -10,20 +10,20 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
-@Service //해당 클래스를 루트 컨테이너에 빈(Bean) 객체로 생성
-@RequiredArgsConstructor // final + not null 붙은 것 대신 생성자 생성
+@Service
+@RequiredArgsConstructor
 @Transactional
+// (11) 상단 3개의 어노테이션의 역할 주석으로 작성
 public class UserService {
     private final UserRepository userRepository;
-    // 레파지토리 의존성 주입
 
     @Transactional
-    public void SaveUser(UserRequestDTO userRequestDTO){ //유저 저장
+    public void SaveUser(UserRequestDTO userRequestDTO){ // (12) 해당 로직을 간단하게 설명
         userRepository.save(userRequestDTO.toEntity());
     }
 
     @Transactional
-    public UserResponseDTO SelectUserById(Long id) { //Id로 유저 정보 가져오기
+    public UserResponseDTO SelectUserById(Long id) {  // (13) 해당 로직을 간단하게 설명
         Optional<UserEntity> user = userRepository.findById(id);
         if (user.isPresent()) {
             return new UserResponseDTO(user.get().getId(), user.get().getName());

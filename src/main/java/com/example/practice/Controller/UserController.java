@@ -12,17 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
+    // (3)
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
+    // (3) 해당 로직 간단하게 설명
 
-    @GetMapping("/save")  // 유저 회원가입
+    @GetMapping("/save")
     public void UserSave(UserRequestDTO userRequestDTO){
         userService.SaveUser(userRequestDTO);
     }
 
-    @GetMapping("select") // 유저 정보 확인
+    @GetMapping("select")
     public UserResponseDTO UserSelectById(Long id){
         return userService.SelectUserById(id);
     }
