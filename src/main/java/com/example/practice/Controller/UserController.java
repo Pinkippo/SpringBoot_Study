@@ -20,8 +20,9 @@ public class UserController {
     // (3) 해당 로직 간단하게 설명
 
     @GetMapping("/save")
-    public void UserSave(UserRequestDTO userRequestDTO){
-        userService.SaveUser(userRequestDTO);
+    public void UserSave(String name){
+        UserRequestDTO user = new UserRequestDTO(name);
+        userService.SaveUser(user);
     }
 
     @GetMapping("select")

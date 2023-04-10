@@ -25,8 +25,7 @@ public class UserEntity {
     private String name;
 
     @Builder
-    public UserEntity(Long id, String name){
-        this.id = id;
+    public UserEntity(String name){
         this.name = name;
     }
 
