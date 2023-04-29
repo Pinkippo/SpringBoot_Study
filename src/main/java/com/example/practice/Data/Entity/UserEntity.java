@@ -21,7 +21,7 @@ public class UserEntity {
     @Column(name="userId")
     private Long id;
 
-    @Column(name = "userName",length = 30, nullable = false)
+    @Column(name = "userName",length = 10, nullable = false)
     private String name;
 
     @Builder
