@@ -5,13 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter //  (4) 해당 어노테이션의 역할 주석으로 작성
-@NoArgsConstructor  // (5) 해당 어노테이션의 역할 주석으로 작성
+@Getter //  getter 메소드 자동 생성
+@NoArgsConstructor  // 인자를 받지 않는 기본 생성자를 자동으로 생성해주는 기능을 제공
 @AllArgsConstructor
 public class UserRequestDTO {
     private String name;
 
-    // (6) 해당 로직 간단하게 설명
+    // DTO를 Entity클래스로 변경하는 기능
     public UserEntity toEntity(){
         return UserEntity.builder()
                 .name(name)

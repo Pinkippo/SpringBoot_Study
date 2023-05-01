@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-    // (3)
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    // (3) 해당 로직 간단하게 설명
-    
+    /* UserController 클래스의 인스턴스가 생성될 때, UserService 인터페이스를 구현한 구현체가 주입되어
+     userService 멤버 변수에 할당됩니다. 이후 UserController 클래스 내부에서 userService를 이용하여
+      다양한 기능을 수행할 수 있게된다.
+    */
+
     @GetMapping("/save")
     public void UserSave(String name){
         UserRequestDTO user = new UserRequestDTO(name);

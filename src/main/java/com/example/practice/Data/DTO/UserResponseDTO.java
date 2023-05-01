@@ -7,7 +7,7 @@ public class UserResponseDTO {
     private Long id;
     private String name;
 
-    // (7) 해당 로직 간단하게 설명
+    // 생성자
     public UserResponseDTO(Long id, String name){
         this.id = id;
         this.name = name;

@@ -13,7 +13,6 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-// (11) 상단 3개의 어노테이션의 역할 주석으로 작성
 public class UserService {
     private final UserRepository userRepository;
 
@@ -23,7 +22,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDTO SelectUserById(Long id) {  // (13) 해당 로직을 간단하게 설명
+    public UserResponseDTO SelectUserById(Long id) {  // id로 select
         Optional<UserEntity> user = userRepository.findById(id);
         if (user.isPresent()) {
             return new UserResponseDTO(user.get().getId(), user.get().getName());
