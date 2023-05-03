@@ -16,7 +16,7 @@ public class UserEntity {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 생성할때 널로두면 자동으로 들어감
     // PK 설정 + 자동 생성
     @Column(name="userId")
     private Long id;
