@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -23,6 +25,12 @@ public class UserEntity {
 
     @Column(name = "userName",length = 10, nullable = false)
     private String name;
+
+    /*
+    2. 유저 엔티티에 프로덕트 엔티티 리스트 매핑
+     */
+    @OneToMany(mappedBy = "user")
+    List<ProductEntity> products = new ArrayList<>();
 
     @Builder
     public UserEntity(String name){

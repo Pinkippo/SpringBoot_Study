@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductRequestDTO {
+    // 0505: 연관관계 매핑으로 로직 변경
+    public Long userid;
     public String pname;
     public int pprice;
 

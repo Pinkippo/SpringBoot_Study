@@ -21,9 +21,10 @@ public class ProductController {
     }
 
     /*
-    1. 상품 등록 메서드 작성
+    상품 등록 메서드 작성
     조건 : post 방식으로 인자를 받아 db에 저장하고 리턴값으로 해당 상품의 id값을 리턴
-    + 숙제 : DTO를 이용해서 만들것
+
+    + 0505 : 연관관계 매핑으로 저장 로직 변경
     */
     @PostMapping("/save")
     public Long ProductSave(@RequestBody ProductRequestDTO productRequestDTO){
@@ -31,10 +32,11 @@ public class ProductController {
     }
 
     /*
-    2. 상품 조회 메서드 작성
+    상품 조회 메서드 작성
     조건 : db내에 존재하는 모든 상품 리스트를 리턴할 것
-    + 숙제 : 해당 엔티티를 엔티티의 리스트가 아니라 responseDTO를 작성해 List<responesDTO> 로 리턴할 것
-    + 정보 다 들어있고, 몇개의 리스트가 존재하는지 카운트도 리턴할 것
+
+    + 0505 : 해당 상품을 등록한 사용자의 id와 이름을 함께 리턴해줌
+    + 순환참조에 대해서 한번 더 생각해볼 것
      */
     @GetMapping("/select")
     public Result ProductSelect(){
@@ -45,13 +47,12 @@ public class ProductController {
     @Data
     @AllArgsConstructor
     static class Result<T>{
-
         private int count;
         private T data;
     }
 
     /*
-    3. 상품의 이름으로 조회 메서드 작성
+    상품의 이름으로 조회 메서드 작성
     조건 : db내에 존재할경우 객체 전송 아닐경우 상품이없다고 전송
     + 숙제 : 마찬가지로 responseDTO로 캐스팅해서 리턴할 것
      */
