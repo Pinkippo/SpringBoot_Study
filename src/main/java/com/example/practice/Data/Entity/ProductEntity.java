@@ -22,9 +22,9 @@ public class ProductEntity {
     /*
     1. 프로덕트 엔티티에 유저 엔티티 매핑
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩 -> 즉 객체가 필요한 시점에 쿼리가 나감 -> 후에 실력이 늘면 fetch join 한방 쿼리 공부
     @JoinColumn(name = "userId")
-    private UserEntity user;
+    private UserEntity user; // 상품 엔티티에 유저 엔티티 매핑하여 연관관계 성립
 
     @Column(name = "productName",length = 20, nullable = false)
     private String pname;

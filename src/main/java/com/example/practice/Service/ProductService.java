@@ -26,7 +26,8 @@ public class ProductService {
 
     public Long ProductSave(ProductRequestDTO productRequestDTO){
 
-        // 0505: 연관관계 매핑으로 로직 변경
+        // 0505 로직 수정 : 연관관계 매핑으로 로직 변경
+        // + 제네릭 타입 및 옵셔널에 대해서 확실하게 알고 넘어갈 것
         Optional<UserEntity> user = userRepository.findById(productRequestDTO.getUserid());
         if(user.isPresent()) {
             ProductEntity product = new ProductEntity(
@@ -40,9 +41,10 @@ public class ProductService {
         }
     }
 
+    // 0505 로직 수정 : 연관관계 매핑으로 로직 변경
+    // + 더 나아가기 : 해당 로직을 람다가 아닌 다른 방법으로 진행했다면 어떻게 접근해야할지 생각해볼것
     public List<ProductResponseDTO> ProductSelect(){
         List<ProductEntity> productEntities = productRepository.findAll();
-        // 0505: 연관관계 매핑으로 로직 변경
         List<ProductResponseDTO> productResponseDTO = productEntities.stream()
                 .map(entity -> {
                     ProductResponseDTO dto = new ProductResponseDTO();
@@ -53,16 +55,17 @@ public class ProductService {
                     dto.setPprice(entity.getPprice());
                     return dto;
                 })
-                .collect(Collectors.toList()); // DTO 객체 리스트로 변환
+                .collect(Collectors.toList());
 
         return productResponseDTO;
     }
 
 
 
+    // 0505 로직 수정 : 연관관계 매핑으로 로직 변경
+    // + 더 나아가기 : 해당 로직에서 예외처리가 어떻게 되어있는지 파악할 것
     public ProductResponseDTO ProductSelectById(Long id){
         Optional<ProductEntity> product = productRepository.findById(id);
-        // 0505: 연관관계 매핑으로 로직 변경
         return product.map(productEntity -> new ProductResponseDTO(productEntity.getPid()
                 ,productEntity.getUser().getId(),productEntity.getUser().getName(), productEntity.getPname(),
                         productEntity.getPprice())).orElseGet(ProductResponseDTO::new);
