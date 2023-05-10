@@ -30,7 +30,7 @@ public class UserEntity {
     2. 유저 엔티티에 프로덕트 엔티티 리스트 매핑
      */
     @OneToMany(mappedBy = "user")
-    List<ProductEntity> products = new ArrayList<>(); // 상품 엔티티를 리스트 타입으로 보관하여 연관관계 성립
+    private List<ProductEntity> products = new ArrayList<>(); // 상품 엔티티를 리스트 타입으로 보관하여 연관관계 성립
 
     @Builder
     public UserEntity(String name){

@@ -66,9 +66,12 @@ public class ProductService {
     // + 더 나아가기 : 해당 로직에서 예외처리가 어떻게 되어있는지 파악할 것
     public ProductResponseDTO ProductSelectById(Long id){
         Optional<ProductEntity> product = productRepository.findById(id);
-        return product.map(productEntity -> new ProductResponseDTO(productEntity.getPid()
-                ,productEntity.getUser().getId(),productEntity.getUser().getName(), productEntity.getPname(),
-                        productEntity.getPprice())).orElseGet(ProductResponseDTO::new);
+        return product.map(productEntity -> new ProductResponseDTO(
+                productEntity.getPid(),
+                productEntity.getUser().getId(),
+                productEntity.getUser().getName(),
+                productEntity.getPname(),
+                productEntity.getPprice())).orElseGet(ProductResponseDTO::new);
     }
 
 }
